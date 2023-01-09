@@ -9,6 +9,7 @@ It contains the following components:
 - Boolean Decision Rules via Column Generation (Light Edition) ([Dash et al., 2018](https://papers.nips.cc/paper/7716-boolean-decision-rules-via-column-generation))
 - Generalized Linear Rule Models ([Wei et al., 2019](http://proceedings.mlr.press/v97/wei19a.html))
 - Fast Effective Rule Induction (Ripper) ([William W Cohen, 1995](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.2612&rep=rep1&type=pdf))
+- Relational Rule Network (R2N) ([Kusters et al., 2022](https://arxiv.org/abs/2201.06515))
 - trxf - Technical Rule Interchange Format - Rule Set Interchange providing common evaluation tools and PMML export for 
 rule sets.
 
