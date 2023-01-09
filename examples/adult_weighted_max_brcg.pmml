@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" version="4.4.1">
+    <Header copyright="Copyright IBM Corp, exported to PMML by Nyoka (c) 2023 Software AG" description="Default description">
+        <Application name="SimpleRuleSetExport" version="0.0.1"/>
+        <Timestamp>2023-01-04 11:29:14.194497</Timestamp>
+    </Header>
+    <DataDictionary numberOfFields="14">
+        <DataField name="age" optype="continuous" dataType="double"/>
+        <DataField name="workclass" optype="categorical" dataType="string">
+            <Value value="Private"/>
+            <Value value="State-gov"/>
+            <Value value="Self-emp-not-inc"/>
+            <Value value="Self-emp-inc"/>
+            <Value value="Federal-gov"/>
+            <Value value="Local-gov"/>
+            <Value value="?"/>
+            <Value value="Without-pay"/>
+        </DataField>
+        <DataField name="fnlwgt" optype="continuous" dataType="double"/>
+        <DataField name="education" optype="categorical" dataType="string">
+            <Value value="Some-college"/>
+            <Value value="HS-grad"/>
+            <Value value="Bachelors"/>
+            <Value value="Masters"/>
+            <Value value="Assoc-acdm"/>
+            <Value value="7th-8th"/>
+            <Value value="11th"/>
+            <Value value="Assoc-voc"/>
+            <Value value="Prof-school"/>
+            <Value value="9th"/>
+            <Value value="5th-6th"/>
+            <Value value="10th"/>
+            <Value value="Doctorate"/>
+            <Value value="12th"/>
+            <Value value="1st-4th"/>
+            <Value value="Preschool"/>
+        </DataField>
+        <DataField name="education_num" optype="continuous" dataType="double"/>
+        <DataField name="marital_status" optype="categorical" dataType="string">
+            <Value value="Divorced"/>
+            <Value value="Married-civ-spouse"/>
+            <Value value="Never-married"/>
+            <Value value="Separated"/>
+            <Value value="Widowed"/>
+            <Value value="Married-spouse-absent"/>
+            <Value value="Married-AF-spouse"/>
+        </DataField>
+        <DataField name="occupation" optype="categorical" dataType="string">
+            <Value value="Adm-clerical"/>
+            <Value value="Exec-managerial"/>
+            <Value value="Machine-op-inspct"/>
+            <Value value="Craft-repair"/>
+            <Value value="Prof-specialty"/>
+            <Value value="Sales"/>
+            <Value value="Handlers-cleaners"/>
+            <Value value="Other-service"/>
+            <Value value="Protective-serv"/>
+            <Value value="Priv-house-serv"/>
+            <Value value="Transport-moving"/>
+            <Value value="?"/>
+            <Value value="Farming-fishing"/>
+            <Value value="Tech-support"/>
+            <Value value="Armed-Forces"/>
+        </DataField>
+        <DataField name="relationship" optype="categorical" dataType="string">
+            <Value value="Not-in-family"/>
+            <Value value="Wife"/>
+            <Value value="Husband"/>
+            <Value value="Unmarried"/>
+            <Value value="Own-child"/>
+            <Value value="Other-relative"/>
+        </DataField>
+        <DataField name="race" optype="categorical" dataType="string">
+            <Value value="White"/>
+            <Value value="Black"/>
+            <Value value="Other"/>
+            <Value value="Asian-Pac-Islander"/>
+            <Value value="Amer-Indian-Eskimo"/>
+        </DataField>
+        <DataField name="sex" optype="categorical" dataType="string">
+            <Value value="Female"/>
+            <Value value="Male"/>
+        </DataField>
+        <DataField name="capital_gain" optype="continuous" dataType="double"/>
+        <DataField name="capital_loss" optype="continuous" dataType="double"/>
+        <DataField name="hours_per_week" optype="continuous" dataType="double"/>
+        <DataField name="native_country" optype="categorical" dataType="string">
+            <Value value="United-States"/>
+            <Value value="Mexico"/>
+            <Value value="Puerto-Rico"/>
+            <Value value="El-Salvador"/>
+            <Value value="?"/>
+            <Value value="Columbia"/>
+            <Value value="Poland"/>
+            <Value value="Cambodia"/>
+            <Value value="Germany"/>
+            <Value value="Philippines"/>
+            <Value value="Canada"/>
+            <Value value="Ecuador"/>
+            <Value value="Italy"/>
+            <Value value="Cuba"/>
+            <Value value="Iran"/>
+            <Value value="Jamaica"/>
+            <Value value="Haiti"/>
+            <Value value="South"/>
+            <Value value="Taiwan"/>
+            <Value value="Dominican-Republic"/>
+            <Value value="Ireland"/>
+            <Value value="Japan"/>
+            <Value value="Scotland"/>
+            <Value value="India"/>
+            <Value value="Trinadad&amp;Tobago"/>
+            <Value value="Hungary"/>
+            <Value value="England"/>
+            <Value value="Laos"/>
+            <Value value="Hong"/>
+            <Value value="Greece"/>
+            <Value value="Portugal"/>
+            <Value value="Guatemala"/>
+            <Value value="China"/>
+            <Value value="France"/>
+            <Value value="Nicaragua"/>
+            <Value value="Vietnam"/>
+            <Value value="Thailand"/>
+            <Value value="Peru"/>
+            <Value value="Honduras"/>
+            <Value value="Yugoslavia"/>
+        </DataField>
+    </DataDictionary>
+    <RuleSetModel functionName="classification" algorithmName="RuleSet">
+        <MiningSchema>
+            <MiningField name="age" usageType="active"/>
+            <MiningField name="education_num" usageType="active"/>
+            <MiningField name="marital_status" usageType="active"/>
+            <MiningField name="occupation" usageType="active"/>
+        </MiningSchema>
+        <RuleSet defaultScore="&lt;=50K">
+            <RuleSelectionMethod criterion="weightedMax"/>
+            <SimpleRule id="[age &gt; 26.0] ^ [education_num &gt; 9.0] ^ [marital_status == Married-civ-spouse] ^ [occupation != Craft-repair] ^ [occupation != Farming-fishing] ^ [occupation != Handlers-cleaners] ^ [occupation != Other-service]" score="1" recordCount="6513" nbCorrect="5348" confidence="0.6568778979907264" weight="0.6568778979907264">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="age" operator="greaterThan" value="26.0"/>
+                    <SimplePredicate field="education_num" operator="greaterThan" value="9.0"/>
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="occupation" operator="notEqual" value="Craft-repair"/>
+                    <SimplePredicate field="occupation" operator="notEqual" value="Farming-fishing"/>
+                    <SimplePredicate field="occupation" operator="notEqual" value="Handlers-cleaners"/>
+                    <SimplePredicate field="occupation" operator="notEqual" value="Other-service"/>
+                </CompoundPredicate>
+            </SimpleRule>
+        </RuleSet>
+    </RuleSetModel>
+</PMML>

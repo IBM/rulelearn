@@ -1,0 +1,9 @@
+numpy
+pandas
+scikit-learn
+numba
+matplotlib
+cvxpy
+nyoka==5.4.0
+xmltodict
+torch

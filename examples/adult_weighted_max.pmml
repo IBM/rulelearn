@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" version="4.4.1">
+    <Header copyright="Copyright IBM Corp, exported to PMML by Nyoka (c) 2023 Software AG" description="Default description">
+        <Application name="SimpleRuleSetExport" version="0.0.1"/>
+        <Timestamp>2023-01-04 11:28:25.904329</Timestamp>
+    </Header>
+    <DataDictionary numberOfFields="14">
+        <DataField name="age" optype="continuous" dataType="double"/>
+        <DataField name="workclass" optype="categorical" dataType="string">
+            <Value value="Private"/>
+            <Value value="State-gov"/>
+            <Value value="Self-emp-not-inc"/>
+            <Value value="Self-emp-inc"/>
+            <Value value="Federal-gov"/>
+            <Value value="Local-gov"/>
+            <Value value="?"/>
+            <Value value="Without-pay"/>
+        </DataField>
+        <DataField name="fnlwgt" optype="continuous" dataType="double"/>
+        <DataField name="education" optype="categorical" dataType="string">
+            <Value value="Some-college"/>
+            <Value value="HS-grad"/>
+            <Value value="Bachelors"/>
+            <Value value="Masters"/>
+            <Value value="Assoc-acdm"/>
+            <Value value="7th-8th"/>
+            <Value value="11th"/>
+            <Value value="Assoc-voc"/>
+            <Value value="Prof-school"/>
+            <Value value="9th"/>
+            <Value value="5th-6th"/>
+            <Value value="10th"/>
+            <Value value="Doctorate"/>
+            <Value value="12th"/>
+            <Value value="1st-4th"/>
+            <Value value="Preschool"/>
+        </DataField>
+        <DataField name="education_num" optype="continuous" dataType="double"/>
+        <DataField name="marital_status" optype="categorical" dataType="string">
+            <Value value="Divorced"/>
+            <Value value="Married-civ-spouse"/>
+            <Value value="Never-married"/>
+            <Value value="Separated"/>
+            <Value value="Widowed"/>
+            <Value value="Married-spouse-absent"/>
+            <Value value="Married-AF-spouse"/>
+        </DataField>
+        <DataField name="occupation" optype="categorical" dataType="string">
+            <Value value="Adm-clerical"/>
+            <Value value="Exec-managerial"/>
+            <Value value="Machine-op-inspct"/>
+            <Value value="Craft-repair"/>
+            <Value value="Prof-specialty"/>
+            <Value value="Sales"/>
+            <Value value="Handlers-cleaners"/>
+            <Value value="Other-service"/>
+            <Value value="Protective-serv"/>
+            <Value value="Priv-house-serv"/>
+            <Value value="Transport-moving"/>
+            <Value value="?"/>
+            <Value value="Farming-fishing"/>
+            <Value value="Tech-support"/>
+            <Value value="Armed-Forces"/>
+        </DataField>
+        <DataField name="relationship" optype="categorical" dataType="string">
+            <Value value="Not-in-family"/>
+            <Value value="Wife"/>
+            <Value value="Husband"/>
+            <Value value="Unmarried"/>
+            <Value value="Own-child"/>
+            <Value value="Other-relative"/>
+        </DataField>
+        <DataField name="race" optype="categorical" dataType="string">
+            <Value value="White"/>
+            <Value value="Black"/>
+            <Value value="Other"/>
+            <Value value="Asian-Pac-Islander"/>
+            <Value value="Amer-Indian-Eskimo"/>
+        </DataField>
+        <DataField name="sex" optype="categorical" dataType="string">
+            <Value value="Female"/>
+            <Value value="Male"/>
+        </DataField>
+        <DataField name="capital_gain" optype="continuous" dataType="double"/>
+        <DataField name="capital_loss" optype="continuous" dataType="double"/>
+        <DataField name="hours_per_week" optype="continuous" dataType="double"/>
+        <DataField name="native_country" optype="categorical" dataType="string">
+            <Value value="United-States"/>
+            <Value value="Mexico"/>
+            <Value value="Puerto-Rico"/>
+            <Value value="El-Salvador"/>
+            <Value value="?"/>
+            <Value value="Columbia"/>
+            <Value value="Poland"/>
+            <Value value="Cambodia"/>
+            <Value value="Germany"/>
+            <Value value="Philippines"/>
+            <Value value="Canada"/>
+            <Value value="Ecuador"/>
+            <Value value="Italy"/>
+            <Value value="Cuba"/>
+            <Value value="Iran"/>
+            <Value value="Jamaica"/>
+            <Value value="Haiti"/>
+            <Value value="South"/>
+            <Value value="Taiwan"/>
+            <Value value="Dominican-Republic"/>
+            <Value value="Ireland"/>
+            <Value value="Japan"/>
+            <Value value="Scotland"/>
+            <Value value="India"/>
+            <Value value="Trinadad&amp;Tobago"/>
+            <Value value="Hungary"/>
+            <Value value="England"/>
+            <Value value="Laos"/>
+            <Value value="Hong"/>
+            <Value value="Greece"/>
+            <Value value="Portugal"/>
+            <Value value="Guatemala"/>
+            <Value value="China"/>
+            <Value value="France"/>
+            <Value value="Nicaragua"/>
+            <Value value="Vietnam"/>
+            <Value value="Thailand"/>
+            <Value value="Peru"/>
+            <Value value="Honduras"/>
+            <Value value="Yugoslavia"/>
+        </DataField>
+    </DataDictionary>
+    <RuleSetModel functionName="classification" algorithmName="RuleSet">
+        <MiningSchema>
+            <MiningField name="marital_status" usageType="active"/>
+            <MiningField name="education_num" usageType="active"/>
+            <MiningField name="age" usageType="active"/>
+            <MiningField name="hours_per_week" usageType="active"/>
+            <MiningField name="workclass" usageType="active"/>
+            <MiningField name="capital_loss" usageType="active"/>
+            <MiningField name="fnlwgt" usageType="active"/>
+            <MiningField name="occupation" usageType="active"/>
+            <MiningField name="education" usageType="active"/>
+            <MiningField name="capital_gain" usageType="active"/>
+            <MiningField name="relationship" usageType="active"/>
+        </MiningSchema>
+        <RuleSet defaultScore="&lt;=50K">
+            <RuleSelectionMethod criterion="weightedMax"/>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [age &gt;= 37.0] ^ [education_num &lt;= 11.0] ^ [hours_per_week &gt;= 38.0] ^ [workclass == Federal-gov]" score="&gt;50K" recordCount="6513" nbCorrect="4953" confidence="0.6486486486486487" weight="0.6486486486486487">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="37.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="11.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="38.0"/>
+                    <SimplePredicate field="workclass" operator="equal" value="Federal-gov"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 14.0] ^ [capital_loss &gt;= 1741.0]" score="&gt;50K" recordCount="6513" nbCorrect="4979" confidence="0.9743589743589743" weight="0.9743589743589743">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="14.0"/>
+                    <SimplePredicate field="capital_loss" operator="greaterOrEqual" value="1741.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [education_num &lt;= 11.0] ^ [hours_per_week &gt;= 38.0] ^ [fnlwgt &gt;= 139000.0] ^ [fnlwgt &lt;= 145098.0] ^ [age &lt;= 54.0] ^ [age &gt;= 51.0]" score="&gt;50K" recordCount="6513" nbCorrect="4942" confidence="0.5" weight="0.5">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="11.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="38.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="139000.0"/>
+                    <SimplePredicate field="fnlwgt" operator="lessOrEqual" value="145098.0"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="54.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="51.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [education_num &lt;= 10.0] ^ [hours_per_week &gt;= 38.0] ^ [age &lt;= 59.0] ^ [hours_per_week &lt;= 46.0] ^ [age &gt;= 58.0] ^ [occupation == Adm-clerical]" score="&gt;50K" recordCount="6513" nbCorrect="4941" confidence="0.4" weight="0.4">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="10.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="38.0"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="59.0"/>
+                    <SimplePredicate field="hours_per_week" operator="lessOrEqual" value="46.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="58.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Adm-clerical"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [education_num &lt;= 11.0] ^ [fnlwgt &gt;= 140664.0] ^ [hours_per_week &gt;= 44.0] ^ [hours_per_week &lt;= 52.0] ^ [age &gt;= 57.0] ^ [fnlwgt &lt;= 155256.0]" score="&gt;50K" recordCount="6513" nbCorrect="4942" confidence="0.5" weight="0.5">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="11.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="140664.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="44.0"/>
+                    <SimplePredicate field="hours_per_week" operator="lessOrEqual" value="52.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="57.0"/>
+                    <SimplePredicate field="fnlwgt" operator="lessOrEqual" value="155256.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [education_num &lt;= 10.0] ^ [hours_per_week &gt;= 40.0] ^ [hours_per_week &lt;= 48.0] ^ [education == Some-college] ^ [age &gt;= 48.0] ^ [fnlwgt &gt;= 281540.0] ^ [age &lt;= 52.0]" score="&gt;50K" recordCount="6513" nbCorrect="4941" confidence="0.3333333333333333" weight="0.3333333333333333">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="10.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="40.0"/>
+                    <SimplePredicate field="hours_per_week" operator="lessOrEqual" value="48.0"/>
+                    <SimplePredicate field="education" operator="equal" value="Some-college"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="48.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="281540.0"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="52.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [occupation == Prof-specialty] ^ [education_num &gt;= 14.0] ^ [education == Prof-school]" score="&gt;50K" recordCount="6513" nbCorrect="4998" confidence="0.8888888888888888" weight="0.8888888888888888">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Prof-specialty"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="14.0"/>
+                    <SimplePredicate field="education" operator="equal" value="Prof-school"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [hours_per_week &gt;= 36.0] ^ [occupation == Prof-specialty] ^ [education_num &gt;= 14.0] ^ [hours_per_week &lt;= 40.0]" score="&gt;50K" recordCount="6513" nbCorrect="4989" confidence="0.7974683544303798" weight="0.7974683544303798">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="36.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Prof-specialty"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="14.0"/>
+                    <SimplePredicate field="hours_per_week" operator="lessOrEqual" value="40.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 13.0] ^ [occupation == Exec-managerial] ^ [age &gt;= 45.0]" score="&gt;50K" recordCount="6513" nbCorrect="5011" confidence="0.8484848484848485" weight="0.8484848484848485">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="13.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Exec-managerial"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="45.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 13.0] ^ [hours_per_week &gt;= 31.0] ^ [capital_loss &gt;= 1741.0] ^ [capital_loss &lt;= 1977.0]" score="&gt;50K" recordCount="6513" nbCorrect="5002" confidence="0.9838709677419355" weight="0.9838709677419355">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="13.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="31.0"/>
+                    <SimplePredicate field="capital_loss" operator="greaterOrEqual" value="1741.0"/>
+                    <SimplePredicate field="capital_loss" operator="lessOrEqual" value="1977.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 10.0] ^ [age &gt;= 36.0] ^ [capital_gain &gt;= 5060.0]" score="&gt;50K" recordCount="6513" nbCorrect="5108" confidence="0.9882352941176471" weight="0.9882352941176471">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="10.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="36.0"/>
+                    <SimplePredicate field="capital_gain" operator="greaterOrEqual" value="5060.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 13.0] ^ [hours_per_week &gt;= 35.0] ^ [age &gt;= 29.0] ^ [occupation == Exec-managerial]" score="&gt;50K" recordCount="6513" nbCorrect="5084" confidence="0.8349056603773585" weight="0.8349056603773585">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="13.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="35.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="29.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Exec-managerial"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 12.0] ^ [hours_per_week &gt;= 41.0]" score="&gt;50K" recordCount="6513" nbCorrect="5199" confidence="0.772823779193206" weight="0.772823779193206">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="12.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="41.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 11.0] ^ [age &gt;= 48.0] ^ [hours_per_week &lt;= 40.0] ^ [age &lt;= 61.0]" score="&gt;50K" recordCount="6513" nbCorrect="4989" confidence="0.6424242424242425" weight="0.6424242424242425">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="11.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="48.0"/>
+                    <SimplePredicate field="hours_per_week" operator="lessOrEqual" value="40.0"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="61.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [age &gt;= 34.0] ^ [education_num &gt;= 11.0] ^ [occupation == Exec-managerial]" score="&gt;50K" recordCount="6513" nbCorrect="5082" confidence="0.8211009174311926" weight="0.8211009174311926">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="34.0"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="11.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Exec-managerial"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 10.0] ^ [age &gt;= 36.0] ^ [capital_loss &gt;= 1848.0] ^ [capital_loss &lt;= 1977.0]" score="&gt;50K" recordCount="6513" nbCorrect="5003" confidence="0.9841269841269841" weight="0.9841269841269841">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="10.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="36.0"/>
+                    <SimplePredicate field="capital_loss" operator="greaterOrEqual" value="1848.0"/>
+                    <SimplePredicate field="capital_loss" operator="lessOrEqual" value="1977.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [age &gt;= 36.0] ^ [education_num &lt;= 11.0] ^ [fnlwgt &gt;= 117073.0] ^ [occupation == Tech-support]" score="&gt;50K" recordCount="6513" nbCorrect="4949" confidence="0.6296296296296297" weight="0.6296296296296297">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="36.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="11.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="117073.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Tech-support"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 12.0] ^ [fnlwgt &lt;= 306982.0] ^ [fnlwgt &gt;= 191364.0] ^ [hours_per_week &gt;= 38.0] ^ [age &gt;= 44.0]" score="&gt;50K" recordCount="6513" nbCorrect="5008" confidence="0.8" weight="0.8">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="12.0"/>
+                    <SimplePredicate field="fnlwgt" operator="lessOrEqual" value="306982.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="191364.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="38.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="44.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 10.0] ^ [age &gt;= 31.0] ^ [occupation == Exec-managerial] ^ [workclass == Self-emp-inc] ^ [fnlwgt &gt;= 199352.0]" score="&gt;50K" recordCount="6513" nbCorrect="4950" confidence="0.75" weight="0.75">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="10.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="31.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Exec-managerial"/>
+                    <SimplePredicate field="workclass" operator="equal" value="Self-emp-inc"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="199352.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [education_num &lt;= 10.0] ^ [age &gt;= 47.0] ^ [workclass == Private] ^ [fnlwgt &lt;= 145574.0] ^ [age &lt;= 50.0] ^ [fnlwgt &gt;= 102821.0] ^ [hours_per_week &gt;= 41.0]" score="&gt;50K" recordCount="6513" nbCorrect="4943" confidence="0.5555555555555556" weight="0.5555555555555556">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="10.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="47.0"/>
+                    <SimplePredicate field="workclass" operator="equal" value="Private"/>
+                    <SimplePredicate field="fnlwgt" operator="lessOrEqual" value="145574.0"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="50.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="102821.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="41.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 10.0] ^ [hours_per_week &gt;= 44.0] ^ [fnlwgt &gt;= 218521.0] ^ [fnlwgt &lt;= 255667.0]" score="&gt;50K" recordCount="6513" nbCorrect="4967" confidence="0.6811594202898551" weight="0.6811594202898551">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="10.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="44.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="218521.0"/>
+                    <SimplePredicate field="fnlwgt" operator="lessOrEqual" value="255667.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [age &gt;= 34.0] ^ [education_num &gt;= 12.0] ^ [occupation == Prof-specialty] ^ [fnlwgt &gt;= 193769.0] ^ [hours_per_week &gt;= 39.0]" score="&gt;50K" recordCount="6513" nbCorrect="5003" confidence="0.8279569892473119" weight="0.8279569892473119">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="34.0"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="12.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Prof-specialty"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="193769.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="39.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [capital_gain &gt;= 5060.0]" score="&gt;50K" recordCount="6513" nbCorrect="5187" confidence="0.9919678714859438" weight="0.9919678714859438">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="capital_gain" operator="greaterOrEqual" value="5060.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [occupation == Exec-managerial] ^ [workclass == Private] ^ [age &lt;= 56.0] ^ [age &gt;= 40.0]" score="&gt;50K" recordCount="6513" nbCorrect="5022" confidence="0.8076923076923077" weight="0.8076923076923077">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Exec-managerial"/>
+                    <SimplePredicate field="workclass" operator="equal" value="Private"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="56.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="40.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [education_num &lt;= 11.0] ^ [age &gt;= 45.0] ^ [workclass == Self-emp-inc] ^ [fnlwgt &lt;= 194995.0] ^ [hours_per_week &gt;= 46.0]" score="&gt;50K" recordCount="6513" nbCorrect="4948" confidence="0.6875" weight="0.6875">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="11.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="45.0"/>
+                    <SimplePredicate field="workclass" operator="equal" value="Self-emp-inc"/>
+                    <SimplePredicate field="fnlwgt" operator="lessOrEqual" value="194995.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="46.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 10.0] ^ [age &gt;= 37.0] ^ [occupation == Sales] ^ [age &lt;= 48.0]" score="&gt;50K" recordCount="6513" nbCorrect="4964" confidence="0.6527777777777778" weight="0.6527777777777778">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="10.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="37.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Sales"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="48.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 10.0] ^ [age &gt;= 28.0] ^ [occupation == Prof-specialty] ^ [relationship == Wife] ^ [hours_per_week &lt;= 35.0] ^ [age &lt;= 42.0] ^ [capital_gain &lt;= 0.0]" score="&gt;50K" recordCount="6513" nbCorrect="4944" confidence="0.625" weight="0.625">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="10.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="28.0"/>
+                    <SimplePredicate field="occupation" operator="equal" value="Prof-specialty"/>
+                    <SimplePredicate field="relationship" operator="equal" value="Wife"/>
+                    <SimplePredicate field="hours_per_week" operator="lessOrEqual" value="35.0"/>
+                    <SimplePredicate field="age" operator="lessOrEqual" value="42.0"/>
+                    <SimplePredicate field="capital_gain" operator="lessOrEqual" value="0.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [age &gt;= 34.0] ^ [education_num &lt;= 11.0] ^ [hours_per_week &gt;= 45.0] ^ [fnlwgt &gt;= 260578.0] ^ [education == Some-college]" score="&gt;50K" recordCount="6513" nbCorrect="4943" confidence="0.5172413793103449" weight="0.5172413793103449">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="34.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="11.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="45.0"/>
+                    <SimplePredicate field="fnlwgt" operator="greaterOrEqual" value="260578.0"/>
+                    <SimplePredicate field="education" operator="equal" value="Some-college"/>
+                </CompoundPredicate>
+            </SimpleRule>
+            <SimpleRule id="[marital_status == Married-civ-spouse] ^ [education_num &gt;= 9.0] ^ [age &gt;= 36.0] ^ [education_num &lt;= 11.0] ^ [hours_per_week &gt;= 38.0] ^ [capital_loss &gt;= 1741.0] ^ [capital_loss &lt;= 1977.0]" score="&gt;50K" recordCount="6513" nbCorrect="4969" confidence="0.9655172413793104" weight="0.9655172413793104">
+                <CompoundPredicate booleanOperator="and">
+                    <SimplePredicate field="marital_status" operator="equal" value="Married-civ-spouse"/>
+                    <SimplePredicate field="education_num" operator="greaterOrEqual" value="9.0"/>
+                    <SimplePredicate field="age" operator="greaterOrEqual" value="36.0"/>
+                    <SimplePredicate field="education_num" operator="lessOrEqual" value="11.0"/>
+                    <SimplePredicate field="hours_per_week" operator="greaterOrEqual" value="38.0"/>
+                    <SimplePredicate field="capital_loss" operator="greaterOrEqual" value="1741.0"/>
+                    <SimplePredicate field="capital_loss" operator="lessOrEqual" value="1977.0"/>
+                </CompoundPredicate>
+            </SimpleRule>
+        </RuleSet>
+    </RuleSetModel>
+</PMML>
