@@ -11,10 +11,10 @@ from sklearn.tree import DecisionTreeClassifier
 
 # noinspection PyPep8Naming
 class FeatureBinarizer(TransformerMixin):
-    '''Transformer for binarizing categorical and ordinal features.
-    
+    """Transformer for binarizing categorical and ordinal features.
+
     For use with BooleanRuleCG, LogisticRuleRegression and LinearRuleRegression
-    '''
+    """
     def __init__(self, colCateg=[], numThresh=9, negations=False, threshStr=False, returnOrd=False, **kwargs):
         """
         Args:
@@ -42,8 +42,8 @@ class FeatureBinarizer(TransformerMixin):
         self.returnOrd = returnOrd
 
     def fit(self, X):
-        '''Fit FeatureBinarizer to data
-        
+        """Fit FeatureBinarizer to data
+
         Args:
             X (DataFrame): Original features
         Returns:
@@ -54,7 +54,7 @@ class FeatureBinarizer(TransformerMixin):
             self.NaN (list): Ordinal columns containing NaN values
             self.ordinal (list): Ordinal columns
             self.scaler (StandardScaler): StandardScaler for ordinal columns
-        '''
+        """
         data = X
         # Quantile probabilities
         quantProb = np.linspace(1. / (self.numThresh + 1.), self.numThresh / (self.numThresh + 1.), self.numThresh)
@@ -79,7 +79,7 @@ class FeatureBinarizer(TransformerMixin):
             # Categorical column
             elif (c in self.colCateg) or (data[c].dtype == 'object'):
                 # OneHotEncoder object
-                enc[c] = OneHotEncoder(sparse=False, dtype=int, handle_unknown='ignore')
+                enc[c] = OneHotEncoder(sparse_output=False, dtype=int, handle_unknown='ignore')
                 # Fit to observed categories
                 enc[c].fit(data[[c]])
 
@@ -114,14 +114,14 @@ class FeatureBinarizer(TransformerMixin):
         return self
 
     def transform(self, X):
-        '''Binarize features
-        
+        """Binarize features
+
         Args:
             X (DataFrame): Original features
         Returns:
             A (DataFrame): Binarized features with MultiIndex column labels
             Xstd (DataFrame, optional): Standardized ordinal features
-        '''
+        """
         data = X
         maps = self.maps
         enc = self.enc
@@ -340,7 +340,7 @@ class FeatureBinarizerFromTrees(TransformerMixin):
                 if X[[c]].isna().any()[0]:
                     raise ValueError('Categorical input contains NaN.')
                 # OneHotEncoder object
-                enc[c] = OneHotEncoder(sparse=False, dtype=int, handle_unknown='ignore')
+                enc[c] = OneHotEncoder(sparse_output=False, dtype=int, handle_unknown='ignore')
                 # Fit to observed categories
                 enc[c].fit(X[[c]])
                 # Apply OneHotEncoder
@@ -354,7 +354,7 @@ class FeatureBinarizerFromTrees(TransformerMixin):
 
             # Ordinal column
             elif np.issubdtype(X[c].dtype, np.integer) | np.issubdtype(X[c].dtype, np.floating):
-                # Unlike FeaturBinarizer, just append the original ordinal column. It will be fit by the
+                # Unlike FeatureBinarizer, just append the original ordinal column. It will be fit by the
                 # DecisionTreeClassifier.
                 Anew = DataFrame(
                     X[c].to_numpy(),  # Required
