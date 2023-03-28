@@ -1,4 +1,4 @@
-# symlearn (v0.1)
+# rulelearn (v0.1)
 
 This package contains a rule induction toolkit to generate readable and editable rules from data. The code was
 originally released within the larger [AIX 360 package](https://github.com/Trusted-AI/AIX360) and is provided and 
