@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import MagicMock
-from symlearn.trxf.core import Feature
-import symlearn.trxf.scorecard as sc
+from rulelearn.trxf.core import Feature
+import rulelearn.trxf.scorecard as sc
 
 
 class TestLinearIntervalBin(TestCase):

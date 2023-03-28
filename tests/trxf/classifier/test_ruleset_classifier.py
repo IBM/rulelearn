@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from symlearn.trxf.classifier.ruleset_classifier import RuleSetClassifier, RuleSelectionMethod, \
+from rulelearn.trxf.classifier.ruleset_classifier import RuleSetClassifier, RuleSelectionMethod, \
     ConfidenceMetric, WeightMetric
 from tests.trxf import utilities
 

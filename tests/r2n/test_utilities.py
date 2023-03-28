@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import numpy as np
 
-import symlearn.algorithms.r2n.utilities as util
+import rulelearn.algorithms.r2n.utilities as util
 
 
 class TestUtilities(TestCase):

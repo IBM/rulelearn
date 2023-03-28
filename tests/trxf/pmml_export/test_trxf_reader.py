@@ -1,9 +1,9 @@
 from unittest import TestCase
 
-import symlearn.trxf.classifier.ruleset_classifier as classifier
-from symlearn.trxf.classifier.ruleset_classifier import RuleSetClassifier
-from symlearn.trxf.pmml_export.models import RuleSetModel, SimplePMMLRuleSetModel
-from symlearn.trxf.pmml_export.reader.trxf_reader import TrxfReader
+import rulelearn.trxf.classifier.ruleset_classifier as classifier
+from rulelearn.trxf.classifier.ruleset_classifier import RuleSetClassifier
+from rulelearn.trxf.pmml_export.models import RuleSetModel, SimplePMMLRuleSetModel
+from rulelearn.trxf.pmml_export.reader.trxf_reader import TrxfReader
 from tests.trxf.utilities import create_test_ruleset, DATA_DICTIONARY, TEST_MINING_SCHEMA, \
     TEST_PMML_RULESET, DATA_FRAME
 

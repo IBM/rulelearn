@@ -13,7 +13,7 @@ from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-from symlearn.algorithms.rbm.rbm import FeatureBinarizer, GLRMExplainer, LogisticRuleRegression
+from rulelearn.algorithms.rbm.rbm import FeatureBinarizer, GLRMExplainer, LogisticRuleRegression
 
 
 class TestLogisticRuleRegression(unittest.TestCase):

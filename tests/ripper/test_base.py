@@ -3,7 +3,7 @@ from sklearn.preprocessing import LabelEncoder
 
 import pandas as pd
 
-from symlearn.algorithms.ripper import base
+from rulelearn.algorithms.ripper import base
 
 
 def create_test_df():

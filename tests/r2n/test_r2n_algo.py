@@ -6,10 +6,10 @@ import pandas as pd
 import torch
 from sklearn.model_selection import train_test_split
 
-from symlearn.algorithms.r2n import r2n_algo, utilities
-from symlearn.algorithms.r2n.preprocessing_layers import LinearFeatureLayer
-from symlearn.algorithms.r2n.r2n_algo import _binarize_input
-from symlearn.trxf.core.utils import batch_evaluate
+from rulelearn.algorithms.r2n import r2n_algo, utilities
+from rulelearn.algorithms.r2n.preprocessing_layers import LinearFeatureLayer
+from rulelearn.algorithms.r2n.r2n_algo import _binarize_input
+from rulelearn.trxf.core.utils import batch_evaluate
 
 
 class TestR2Nalgo(TestCase):

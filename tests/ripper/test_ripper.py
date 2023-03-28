@@ -4,11 +4,11 @@ import unittest
 
 import pandas as pd
 
-from symlearn.algorithms.ripper import RipperExplainer
-from symlearn.trxf.core.conjunction import Conjunction
-from symlearn.trxf.core.dnf_ruleset import DnfRuleSet
-from symlearn.trxf.core.feature import Feature
-from symlearn.trxf.core.predicate import Predicate, Relation
+from rulelearn.algorithms.ripper import RipperExplainer
+from rulelearn.trxf.core.conjunction import Conjunction
+from rulelearn.trxf.core.dnf_ruleset import DnfRuleSet
+from rulelearn.trxf.core.feature import Feature
+from rulelearn.trxf.core.predicate import Predicate, Relation
 
 
 def create_test_df():

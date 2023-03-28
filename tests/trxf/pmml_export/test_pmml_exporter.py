@@ -5,13 +5,13 @@ from unittest import TestCase
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from symlearn.algorithms.ripper import RipperExplainer
-from symlearn.algorithms.ripper.ripper_ruleset_generator import RipperRuleSetGenerator
-from symlearn.trxf.classifier.ruleset_classifier import RuleSetClassifier, RuleSelectionMethod, \
+from rulelearn.algorithms.ripper import RipperExplainer
+from rulelearn.algorithms.ripper.ripper_ruleset_generator import RipperRuleSetGenerator
+from rulelearn.trxf.classifier.ruleset_classifier import RuleSetClassifier, RuleSelectionMethod, \
     WeightMetric, ConfidenceMetric
-from symlearn.trxf.pmml_export import NyokaSerializer
-from symlearn.trxf.pmml_export.pmml_exporter import PmmlExporter
-from symlearn.trxf.pmml_export.reader.trxf_reader import TrxfReader
+from rulelearn.trxf.pmml_export import NyokaSerializer
+from rulelearn.trxf.pmml_export.pmml_exporter import PmmlExporter
+from rulelearn.trxf.pmml_export.reader.trxf_reader import TrxfReader
 from tests.trxf.utilities import create_test_ruleset, DATA_FRAME
 
 TIMESTAMP = datetime.datetime(1970, 1, 1, tzinfo=datetime.timezone.utc)

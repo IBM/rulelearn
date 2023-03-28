@@ -5,8 +5,8 @@ import dataclasses
 
 import xmltodict
 
-import symlearn.trxf.pmml_export.models as models
-import symlearn.trxf.pmml_export.serializer as serializer
+import rulelearn.trxf.pmml_export.models as models
+import rulelearn.trxf.pmml_export.serializer as serializer
 
 
 class TestNyokaSerializer(unittest.TestCase):

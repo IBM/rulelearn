@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import torch
 
-from symlearn.algorithms.r2n.mask import SimpleWeightMask
+from rulelearn.algorithms.r2n.mask import SimpleWeightMask
 
 
 class TestMask(TestCase):

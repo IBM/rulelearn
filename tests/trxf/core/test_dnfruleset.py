@@ -1,8 +1,8 @@
 from unittest import TestCase
-from symlearn.trxf.core.feature import Feature
-import symlearn.trxf.core.predicate as predicate
-import symlearn.trxf.core.conjunction as conjunction
-import symlearn.trxf.core.dnf_ruleset as ruleset
+from rulelearn.trxf.core.feature import Feature
+import rulelearn.trxf.core.predicate as predicate
+import rulelearn.trxf.core.conjunction as conjunction
+import rulelearn.trxf.core.dnf_ruleset as ruleset
 
 
 class TestDnfRuleSet(TestCase):

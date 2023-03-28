@@ -3,7 +3,7 @@ from unittest import TestCase
 import numpy as np
 import pandas as pd
 
-import symlearn.trxf.metrics as metrics
+import rulelearn.trxf.metrics as metrics
 from tests.trxf.utilities import create_numerical_test_data, create_numerical_test_ruleset_pos
 
 

@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import torch
 
-import symlearn.algorithms.r2n.preprocessing_layers as preproc
+import rulelearn.algorithms.r2n.preprocessing_layers as preproc
 
 
 class TestPreprocessingLayer(TestCase):

@@ -7,7 +7,7 @@ from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from symlearn.algorithms.rbm.rbm import FeatureBinarizerFromTrees
+from rulelearn.algorithms.rbm.rbm import FeatureBinarizerFromTrees
 
 
 # noinspection PyPep8Naming

@@ -1,12 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from symlearn.trxf.core import Predicate, Feature, Relation, Conjunction, DnfRuleSet
-from symlearn.trxf.pmml_export import models
-from symlearn.trxf.pmml_export.models import DataDictionary, DataField, OpType, DataType, \
+from rulelearn.trxf.core import Predicate, Feature, Relation, Conjunction, DnfRuleSet
+from rulelearn.trxf.pmml_export import models
+from rulelearn.trxf.pmml_export.models import DataDictionary, DataField, OpType, DataType, \
     MiningSchema, MiningField, MiningFieldUsageType, RuleSet, SimpleRule, CompoundPredicate, SimplePredicate, Operator, \
     BooleanOperator
-from symlearn.trxf.pmml_export.models.data_dictionary import Value
+from rulelearn.trxf.pmml_export.models.data_dictionary import Value
 
 DATA_DICTIONARY = DataDictionary(
     dataFields=[DataField(name='toto0', optype=OpType.continuous, dataType=DataType.double),
