@@ -17,9 +17,8 @@ rule sets.
 ### Installation
 
 ```
-pip install -r requirements.txt
+pip install rulelearn
 ```
-to be completed.
 
 
 ## Acknowledgements
@@ -29,6 +28,5 @@ AIX Rules is built with the help of several open source packages. All of these a
 
 ## License Information
 
-Please view both the [LICENSE](https://github.com/vijay-arya/AIX360/blob/master/LICENSE) file and the folder [supplementary license](https://github.com/vijay-arya/AIX360/tree/master/supplementary%20license) present in the root directory for license information. 
-
+Apache 2.0
 
