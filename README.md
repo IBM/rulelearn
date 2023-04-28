@@ -23,7 +23,7 @@ pip install rulelearn
 
 ## Acknowledgements
 
-AIX Rules is built with the help of several open source packages. All of these are listed in setup.py and some of these include:
+rulelearn is built with the help of several open source packages. All of these are listed in requirements.txt and include:
 * scikit-learn https://scikit-learn.org/stable/about.html
 
 ## License Information
